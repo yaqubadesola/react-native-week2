@@ -1,5 +1,6 @@
 import { View } from 'react-native';
-import FeedbackForm from './components/FeedbackForm';
+// import FeedbackForm from './components/FeedbackForm';
+import FeedbackFormWithProps from './components/FeedbackFormWithProps';
 import LittleLemonFooter from './components/LittleLemonFooter';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import MenuItemList from './components/MenuItemList';
@@ -19,7 +20,8 @@ export default function App() {
       */}
       {/* <MenuItemList/> */}
       {/* <WelcomeScreen/> */}
-      <FeedbackForm/>
+      {/* <FeedbackForm/> */}
+      <FeedbackFormWithProps/>
     </View>
     <View
       style={{
