@@ -1,5 +1,6 @@
 import { View } from 'react-native';
-import FeedbackForm from './components/FeedbackForm';
+// import FeedbackForm from './components/FeedbackForm';
+import FeedbackFormWithProps from './components/FeedbackFormWithProps';
 import LittleLemonFooter from './components/LittleLemonFooter';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import MenuItemList from './components/MenuItemList';
@@ -15,11 +16,13 @@ export default function App() {
         backgroundColor: '#495E57',
       }}>
       <LittleLemonHeader />
-      {/* <MenuItems/>
-      */}
-      {/* <MenuItemList/> */}
-      {/* <WelcomeScreen/> */}
-      <FeedbackForm/>
+      {
+
+      /* <MenuItems/>
+        <MenuItemList/>
+        <WelcomeScreen/> 
+        <FeedbackForm/> */}
+     <FeedbackFormWithProps/> 
     </View>
     <View
       style={{

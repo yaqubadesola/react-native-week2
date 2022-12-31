@@ -1,9 +1,10 @@
-import { FlatList, View, Text, StyleSheet, SectionList } from "react-native";
+import React, {useState} from 'react'
+import { Pressable, View, Text, StyleSheet, SectionList } from "react-native";
 import Item from "./Item";
-import React from 'react'
 
   
 const MenuItemList = () => {
+  const [showMenu, setShowMenu] = useState(false)
   const Separator = () => <View style={menuListStyle.separator}/>
   const Header = () => <Text style={menuListStyle.titleHeader}>Menu</Text>
   const renderItem = ({item}) => <Item item={item}/>
@@ -143,7 +144,21 @@ const MenuItemList = () => {
             ItemSeparatorComponent={Separator}
             ListHeaderComponent={Header}
         /> */}
-        <SectionList 
+        <Text style={{textAlign:"center"}}>
+            {!showMenu &&
+                <Text style={menuListStyle.welcomeText}>
+                    Little Lemon is a charming neighborhood bistro that serves simple food and classic cocktails in a lively but casual environment. 
+                    We would love to hear more about your experience with us!
+                </Text>
+            }
+            <Pressable  onPress={() => {
+                setShowMenu(!showMenu)
+            }}>
+                <Text style={menuListStyle.button}>{showMenu? "Home" : "View Menu"}</Text>
+            </Pressable>
+            
+        </Text>
+        {showMenu && <SectionList 
             sections={menuItemsToDisplay} 
             renderItem={renderItem} 
             keyExtractor={(item,index) => item + index}
@@ -151,6 +166,7 @@ const MenuItemList = () => {
             ListHeaderComponent={Header}
             renderSectionHeader={renderSectionHeader}
         />
+        }
     </View>
   )
 }
@@ -162,7 +178,19 @@ const menuListStyle = StyleSheet.create({
         flex:0.75,
         padding:40,
         background:"#00087e",
-        fontSize:"20"
+        fontSize:"20",
+        textAlign:"center",
+        margin: "auto"
+    },
+    button:{
+        fontWeight:"bold",
+        color:"white",
+        backgroundColor:"#889977",
+        borderRadius:10,
+        fontSize:20,
+        textAlign:"center",
+        padding:20,
+        margin:20
     },
     titleHeader:{
         fontWeight:"bold",
@@ -174,6 +202,13 @@ const menuListStyle = StyleSheet.create({
     separator:{
         borderBottomWidth:1,
         borderColor:"#efffff"
+    },
+    welcomeText:{
+        fontSize: 24,
+        padding: 20,
+        marginVertical: 8,
+        color: '#EDEFEE',
+        textAlign: 'center',
     },
     sectionHeader:{
         fontWeight:"bold",
