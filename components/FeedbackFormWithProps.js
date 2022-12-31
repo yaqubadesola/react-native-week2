@@ -1,61 +1,55 @@
 import React, { useState } from 'react'; 
-import { ScrollView, StyleSheet, Text, TextInput, Alert } from 'react-native'; 
+import { ScrollView, View, StyleSheet, Text, TextInput, Pressable } from 'react-native'; 
 
 const FeedbackForm = () => { 
   // declare the variables 
-    const [firstName, onChangeFirstName] = useState(''); 
-    const [lastName, onChangeLastName] = useState(''); 
-    const [message, onChangeMessage] = useState(''); 
-    const [phoneNumber, onChangePhoneNumber] = useState(''); 
+    // const [firstName, onChangeFirstName] = useState(''); 
+    // const [lastName, onChangeLastName] = useState(''); 
+    const [password, onChangePassword] = useState(''); 
+    const [showBtn, onChangeSetShowBtn] = useState(false); 
     const [email, onChangeEmail] = useState(''); 
 
     return ( 
+        
         <ScrollView style={myStyles.container}> 
-        <Text style={myStyles.headingSection}> 
-     How was your visit to Little Lemon? 
-        </Text> 
-        <Text style={myStyles.infoSection}> 
-     Little Lemon is a charming neighborhood bistro that serves simple food 
-     and classic cocktails in a lively but casual environment. We would love 
-     to hear your experience with us! 
-        </Text> 
-        <TextInput 
-     style={myStyles.input} 
-     value={firstName} 
-     onChangeText={onChangeFirstName} 
-     placeholder={'First Name'} 
-     onFocus={() => Alert.alert("Firstname is focused")}
-     onBlur={() => Alert.alert("Firstname is now blur")}
-        /> 
-        <TextInput 
-     style={myStyles.input} 
-     value={lastName} 
-     onChangeText={onChangeLastName} 
-     placeholder={'Last Name'} 
-        /> 
-        <TextInput 
-     style={myStyles.input} 
-     value={phoneNumber} 
-     onChangeText={onChangePhoneNumber} 
-     placeholder={'Phone Number'} 
-     keyboardType={"phone-pad"} 
-        /> 
-    <TextInput 
-     style={myStyles.input} 
-     value={email} 
-     onChangeText={onChangeEmail} 
-     placeholder={'Email'} 
-     keyboardType={"email-address"}
-
-        /> 
-        <TextInput 
+        {showBtn && <View>
+            <Text style={myStyles.headingSection}> 
+                Welcome {email}
+            </Text>
+        </View>}
+        {!showBtn && 
+        <View>
+            <Text style={myStyles.headingSection}> 
+                Login to Little Lemon
+            </Text> 
+     
+            <TextInput 
+            style={myStyles.input} 
+            value={email} 
+            onChangeText={onChangeEmail} 
+            placeholder={'Email'} 
+                /> 
+            <TextInput 
+                style={myStyles.input} 
+                value={password} 
+                onChangeText={onChangePassword} 
+                placeholder={'Password'}
+                secureTextEntry={true}
+            /> 
+        </View>}
+      <Pressable  onPress={() => {
+            onChangeSetShowBtn(!showBtn)
+        }}>
+      <Text style={myStyles.button}>{showBtn? "Home" : "Login"}</Text>
+    </Pressable>
+        {/* <TextInput 
      style={myStyles.messageInput} 
      value={message} 
      onChangeText={onChangeMessage} 
      placeholder={'Please leave feedback'} 
      multiline={true} 
      maxLength={250} 
-        /> 
+        />  */}
         </ScrollView> 
     ); 
 }; 
@@ -81,6 +75,16 @@ input: {
     fontSize: 16, 
     backgroundColor: '#F4CE14', 
  }, 
+ button:{
+    fontWeight:"bold",
+    color:"white",
+    backgroundColor:"#889977",
+    borderRadius:10,
+    fontSize:20,
+    textAlign:"center",
+    padding:20,
+    margin:20
+},
 infoSection: { 
     fontSize: 24, 
     padding: 20, 
