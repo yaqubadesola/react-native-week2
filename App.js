@@ -16,13 +16,12 @@ export default function App() {
         backgroundColor: '#495E57',
       }}>
       <LittleLemonHeader />
-      {
-
-      /* <MenuItems/>
+      {/* <MenuItems/>
         <MenuItemList/>
-        <WelcomeScreen/> 
+       <FeedbackFormWithProps/> 
         <FeedbackForm/> */}
-     <FeedbackFormWithProps/> 
+        <WelcomeScreen/> 
+     
     </View>
     <View
       style={{
