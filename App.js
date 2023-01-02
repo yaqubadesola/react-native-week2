@@ -4,15 +4,17 @@ import FeedbackFormWithProps from './components/FeedbackFormWithProps';
 import LittleLemonFooter from './components/LittleLemonFooter';
 import LittleLemonHeader from './components/LittleLemonHeader';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import MenuItemList from './components/MenuItemList';
 import MenuItems from './components/MenuItems';
 import WelcomeScreen from './components/WelcomeScreen';
 import { Ionicons } from '@expo/vector-icons';
 export default function App() {
-  const Stack = createNativeStackNavigator()
-  const Tab = createBottomTabNavigator()
+  // const Stack = createNativeStackNavigator()
+  // const Tab = createBottomTabNavigator()
+  const Drawer = createDrawerNavigator ();
   
   const LogoTitle = () => {
     return <Image 
@@ -33,7 +35,12 @@ export default function App() {
         <MenuItemList/>
        <FeedbackFormWithProps/> 
         <FeedbackForm/> */}
-          <Tab.Navigator
+        <Drawer.Navigator screenOptions={{drawerPosition: "right"}}>
+          <Drawer.Screen name="Login" component={FeedbackFormWithProps}/>
+          <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+          <Drawer.Screen name="Menu" component={MenuItemList} />
+        </Drawer.Navigator>
+          {/* <Tab.Navigator
               screenOptions={({route}) => ({
                 tabBarIcon :({focused, color, size}) => {
                   let iconName
@@ -57,7 +64,7 @@ export default function App() {
             <Tab.Screen name="Login" component={FeedbackFormWithProps}/>
             <Tab.Screen name="Welcome" component={WelcomeScreen} />
             <Tab.Screen name="Menu" component={MenuItemList} />
-          </Tab.Navigator>
+          </Tab.Navigator> */}
       {/* <Stack.Navigator 
           initialRouteName="Welcome" 
           screenOptions={{ 
