@@ -1,6 +1,8 @@
 import React from 'react'
-import { Image, View, Text, ScrollView, StyleSheet } from 'react-native'
+import { Image, View, Text, ScrollView, StyleSheet, useWindowDimensions, useColorScheme} from 'react-native'
 const  WelcomeScreen = () => {
+  const colorScheme = useColorScheme()
+  const window = useWindowDimensions();
   return (
     <ScrollView style={{flex: 1}}
     indicatorStyle={"white"}
@@ -18,6 +20,11 @@ const  WelcomeScreen = () => {
                   Little Lemon
               </Text>
         </View>
+        {/* <Text>Color Theme : {colorScheme}</Text>
+        <Text style={welComeScreenStyles.regular}>Window Dimensions</Text> 
+        <Text style={welComeScreenStyles.regular}>Height: {window.height}</Text> 
+        <Text style={welComeScreenStyles.regular}>Width: {window.width}</Text> 
+        <Text style={welComeScreenStyles.regular}>Font scale: {window.fontScale}</Text>  */}
         <Text 
           style={welComeScreenStyles.welcomeHeader}
         >
@@ -37,6 +44,9 @@ const welComeScreenStyles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     margin: 10,
+  },
+  container:{
+
   },
   headerText: {
     paddingRight: 10,
