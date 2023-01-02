@@ -20,11 +20,11 @@ const  WelcomeScreen = () => {
                   Little Lemon
               </Text>
         </View>
-        <Text>Color Theme : {colorScheme}</Text>
+        {/* <Text>Color Theme : {colorScheme}</Text>
         <Text style={welComeScreenStyles.regular}>Window Dimensions</Text> 
         <Text style={welComeScreenStyles.regular}>Height: {window.height}</Text> 
         <Text style={welComeScreenStyles.regular}>Width: {window.width}</Text> 
-        <Text style={welComeScreenStyles.regular}>Font scale: {window.fontScale}</Text> 
+        <Text style={welComeScreenStyles.regular}>Font scale: {window.fontScale}</Text>  */}
         <Text 
           style={welComeScreenStyles.welcomeHeader}
         >
