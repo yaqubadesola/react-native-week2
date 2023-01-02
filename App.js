@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 // import FeedbackForm from './components/FeedbackForm';
 import FeedbackFormWithProps from './components/FeedbackFormWithProps';
 import LittleLemonFooter from './components/LittleLemonFooter';
@@ -8,15 +8,22 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MenuItemList from './components/MenuItemList';
 import MenuItems from './components/MenuItems';
 import WelcomeScreen from './components/WelcomeScreen';
-
 export default function App() {
   const Stack = createNativeStackNavigator()
+  
+  const LogoTitle = () => {
+    return <Image 
+            style={{height:40,width:300, resizeMode:"contain", alignSelf:"center"}}
+            source={require('./img/logo.png')}
+            />
+  }
+
   return (
     <NavigationContainer>
        <View
       style={{
         flex: 1,
-        backgroundColor: '#495E57',
+        backgroundColor: '#495E00',
       }}>
       <LittleLemonHeader />
       {/* <MenuItems/>
@@ -24,9 +31,24 @@ export default function App() {
        <FeedbackFormWithProps/> 
         <FeedbackForm/> */}
      
-      <Stack.Navigator>
-          <Stack.Screen name="Welcome" component={WelcomeScreen}/>
+      <Stack.Navigator 
+          initialRouteName="Welcome" 
+          screenOptions={{ 
+            headerStyle: { backgroundColor: '#333333', justifyContent:"center"},
+            headerTintColor:"#fff",
+            headerTintStyle:{fontWeight:"bold"},
+
+          }}>
+          <Stack.Screen 
+            name="Welcome" 
+            component={WelcomeScreen} 
+            options={{
+              title:"Home",
+              headerTitle : (props) => <LogoTitle {...props}/>
+            }}
+          />
           <Stack.Screen name="Login" component={FeedbackFormWithProps}/>
+          <Stack.Screen name="Menu" component={MenuItemList}/>
       </Stack.Navigator>
     </View>
     <View
