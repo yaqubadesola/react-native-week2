@@ -136,7 +136,7 @@ const MenuItemList = () => {
 //     { name: 'Panna Cotta', id: '22W' },
 //   ];
   return (
-    <View style={menuListStyle.container}>
+    <View style={menuListStyle.containerBg}>
         {/* <FlatList 
             data={menuItemsToDisplay} 
             renderItem={renderItem} 
@@ -182,6 +182,9 @@ const menuListStyle = StyleSheet.create({
         textAlign:"center",
         margin: "auto"
     },
+    containerBg:{
+        backgroundColor:"#003003"
+      },
     button:{
         fontWeight:"bold",
         color:"white",
